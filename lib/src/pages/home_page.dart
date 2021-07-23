@@ -1,4 +1,6 @@
+import 'package:ferhcourse/src/pages/alert_page.dart';
 import 'package:ferhcourse/src/providers/menu_provider.dart';
+import 'package:ferhcourse/src/utils/icono_string_util.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -27,7 +29,7 @@ class HomePage extends StatelessWidget {
         // print('builder');
         // print(snapshot.data);
         return ListView(
-          children: _listaItems(snapshot.data),
+          children: _listaItems(snapshot.data, context),
         );
       },
     );
@@ -38,19 +40,26 @@ class HomePage extends StatelessWidget {
   }
 
   //pilas si arroja un error de List dynamic es por el null safety y hay que hacerlo apcional el parámetro
-  List<Widget> _listaItems(List<dynamic>? data) {
+  List<Widget> _listaItems(List<dynamic>? data, BuildContext context) {
     final List<Widget> opciones = [];
 
     //otro error de null safety, la data hay que tomarla como si no pudiera llefar con el ?
     data?.forEach((opt) {
       final widgetTemp = ListTile(
         title: Text(opt['texto']),
-        leading: Icon(
-          Icons.ac_unit_outlined,
-          color: Colors.blue,
-        ),
+        leading: getIcon(opt['icon']),
         trailing: Icon(Icons.keyboard_arrow_right, color: Colors.blue),
-        onTap: () {},
+        onTap: () {
+
+          Navigator.pushNamed(context, opt['ruta']);
+
+          // final route = MaterialPageRoute(
+          //   builder: (context) =>  AlertPage()
+          //   );
+
+          // Navigator.push(context, route);
+
+        },
       );
 
       opciones
