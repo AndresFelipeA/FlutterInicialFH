@@ -1,4 +1,3 @@
-import 'package:ferhcourse/src/pages/alert_page.dart';
 import 'package:ferhcourse/src/providers/menu_provider.dart';
 import 'package:ferhcourse/src/utils/icono_string_util.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +49,6 @@ class HomePage extends StatelessWidget {
         leading: getIcon(opt['icon']),
         trailing: Icon(Icons.keyboard_arrow_right, color: Colors.blue),
         onTap: () {
-
           Navigator.pushNamed(context, opt['ruta']);
 
           // final route = MaterialPageRoute(
@@ -58,7 +56,6 @@ class HomePage extends StatelessWidget {
           //   );
 
           // Navigator.push(context, route);
-
         },
       );
 
