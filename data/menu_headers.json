@@ -1,0 +1,42 @@
+{
+    "nombreApp" : "Painters",
+    "rutas" : [
+        {
+            "ruta" : "cuadrado",
+            "texto": "Header Cuadrado"
+        },
+        {
+            "ruta" : "bordes_redondeados",
+            "texto": "Header Bordes Redondeados"
+        },
+        {
+            "ruta" : "error_diag",
+            "texto": "Header Error Diagonal"
+        },
+        {
+            "ruta" : "diagonal",
+            "texto": "Header Diagonal"
+        },
+        {
+            "ruta" : "triangular",
+            "texto": "Header Triangular"
+        },
+        {
+            "ruta" : "pico",
+            "texto": "Header Pico"
+        },
+        {
+            "ruta" : "curvo",
+            "texto": "Header Curvo"
+        },
+        {
+            "ruta" : "waves",
+            "texto": "Header Waves"
+        },
+        {
+            "ruta" : "waves_grad",
+            "texto": "Header Waves Gradiante"
+        }
+
+    ]
+}
