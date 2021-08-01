@@ -15,7 +15,10 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
     '/': (BuildContext context) => HomePage(),
     'painter': (BuildContext context) => PainterPage(),
     'alert': (BuildContext context) => AlertPage(),
-    'avatar': (BuildContext context) => AvatarPage(),
+
+    ///Otra manera de hacer las rutas
+    AvatarPage.pageName: (BuildContext context) => AvatarPage(),
+    ///Otra manera de hacer las rutas
     'card': (BuildContext context) => CardPage(),
     'animatedContainer': (BuildContext context) => AnimatedContainerPage(),
     'inputs': (BuildContext context) => InputPage(),

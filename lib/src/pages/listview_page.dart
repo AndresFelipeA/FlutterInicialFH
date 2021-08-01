@@ -15,7 +15,6 @@ class _ListaPageState extends State<ListaPage> {
   ScrollController _scrollController = new ScrollController();
   List <int> _listaNumeros = [];
   int _ultimoItem = 0;
-  // ignore: unused_field
   bool _isLoading = false;
 
   @override
@@ -44,8 +43,7 @@ class _ListaPageState extends State<ListaPage> {
   //Eliminar el ScrollController cuando la página se destruya, para no estar sumando un nuevo scroll controller cada vez que la página se crea
   @override
   void dispose() {
-    // TODO: implement dispose
-    super.dispose();
+     super.dispose();
     _scrollController.dispose();
 
   }
@@ -82,26 +80,50 @@ class _ListaPageState extends State<ListaPage> {
 
   _crearLista() {
 
-    return ListView.builder(
-      
-      controller: _scrollController,
-      itemCount: _listaNumeros.length,
-      itemBuilder: ( BuildContext context, int index ){
+    return RefreshIndicator(
 
-        final imagen =_listaNumeros[index];
+      onRefresh: obtenerPagina1,
+      color: Colors.green[50],
+      backgroundColor: Colors.green[500],
 
-        return FadeInImage(
-          placeholder: AssetImage('assets/jar-loading.gif'), 
-          image: NetworkImage('https://picsum.photos/500/300?image=$imagen'));
-
-
-      },
-      
-      
-      );
+      child: ListView.builder(
+        
+        controller: _scrollController,
+        itemCount: _listaNumeros.length,
+        itemBuilder: ( BuildContext context, int index ){
+    
+          final imagen =_listaNumeros[index];
+    
+          return FadeInImage(
+            placeholder: AssetImage('assets/jar-loading.gif'), 
+            image: NetworkImage('https://picsum.photos/500/300?image=$imagen'));
+    
+    
+        },
+        
+        
+        ),
+    );
 
   } 
   
+  Future<Null> obtenerPagina1() async{
+
+    final duration = new Duration( seconds: 2 );
+
+    new Timer ( duration, (){
+
+      _listaNumeros.clear();
+      _ultimoItem++;
+      _agregar10();
+
+    });
+
+    return Future.delayed(duration);
+
+   
+
+  }
 
   void _agregar10(){
 
@@ -113,6 +135,7 @@ class _ListaPageState extends State<ListaPage> {
     setState(() {
       
     });
+    print('ultimo Item 0 $_ultimoItem');
 
   }
 
@@ -158,7 +181,11 @@ class _ListaPageState extends State<ListaPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
 
-              CircularProgressIndicator(),
+              CircularProgressIndicator(
+
+                color: Colors.greenAccent,
+
+              ),
 
             ],
           ),
